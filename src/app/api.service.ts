@@ -14,4 +14,7 @@ export class ApiService {
     return this.httpClient.get(`https://api.themoviedb.org/3/movie/314502-song-of-the-new-earth?api_key=${this.API_KEY}`);
   }
 
+  public SearchByText(searchText: string) {
+    return this.httpClient.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query="${searchText}"&page=1&include_adult=false`);
+  }
 }

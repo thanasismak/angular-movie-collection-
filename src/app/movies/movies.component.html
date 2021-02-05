@@ -1,2 +1,27 @@
-<p>movies works!</p>
-<p>{{movies}}</p>
+<div class="col-12 bg">
+    <form class="form-inline my-2 my-lg-0" style="justify-content: center;
+padding-top: 15vh;" [routerLink]="['/']">
+        <div class="input-group w-75 p-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="search"><i class="fa fa-search" aria-hidden="true"></i></span>
+            </div>
+            <input id="txtSearchText" type="text" class="form-control" name="SearchText" [(ngModel)]="searchText">
+            <button for="textSearchText" class="input-group-append btn-warning my2-my-sm-0" type="button" (click)="onSearchClick()">Search</button>
+        </div>
+    </form>
+    <div class="row justify-content-start"></div>
+</div>
+<hr />
+<div class="card-group">
+    <div *ngFor="let m of movies['results']; let i=index">
+        <div class="card" style="align-items: center">
+            <div class="card-body">
+                <img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}' />
+                <div class="card-footer" style="background-color: #48544b;">
+                    <p class="text-light" style="text-align: center;">{{m.title}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
