@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import { MovieCollectionComponent } from './movie-collection/movie-collection.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MoviesComponent } from './movies/movies.component';
 @NgModule({
   declarations: [
     AppComponent,
     MovieCollectionComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

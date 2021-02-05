@@ -6,26 +6,18 @@
     <div class="collapse navbar-collapse" id="mynav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/movie">Movie Details</a>
+                <a class="nav-link" routerLink="details">Movie Details</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/collection">Movie Collection</a>
+                <a class="nav-link" routerLink="collection">Movie Collection</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="search"><i class="fa fa-search" aria-hidden="true"></i></span>
-                </div>
-                <input type="text" class="form-control" placeholder="Search">
-                <button class="btn btn-warning my2-my-sm-0" type="button">Search</button>
-            </div>
-        </form>
     </div>
 </nav>
 
-<form class="form-inline my-2 my-lg-0">
-    <div class="input-group">
+<form class="form-inline my-2 my-lg-0" style="justify-content: center;
+padding-top: 25vh;" [routerLink]="['/']">
+    <div class="input-group w-75 p-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="search"><i class="fa fa-search" aria-hidden="true"></i></span>
         </div>
