@@ -1,0 +1,41 @@
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home /</a></li>
+        <li class="breadcrumb-item-active"><a routerLink="/Movie Collection">Movie Details</a></li>
+    </ol>
+</nav>
+
+<h5>Movie Details</h5>
+<div *ng-if="i === 1" then details; else nothing></div>
+<!-- <ng-template details> -->
+<div class="column">
+    <!-- <div style="background-image: url(`https://image.tmdb.org/t/p/w300/4eGoeIziBMxs60Y1mViz6nSjpPt.jpg`)"></div> -->
+    <!-- <div class="col-lg-12 pt-2 text-center mx-auto rounded pt-2 pb-2 font-weight-bold" style="background-color: violet;"> -->
+    <div class="card-group">
+        <div class="card bg" style="align-items: center">
+            <div class="card-body">
+                <img src="../../assets/img1.jpg" />
+                <div class="card-footer" style="background-color: #48544b;"><span class="fas fa-heart"></span> Add to Favorites
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" style="color: black; font-family: cursive;">
+                <div> <b>Title:</b> {{Title | uppercase}}</div>
+                <div> <b>Overview:</b> {{Overview}}</div>
+                <div> <b>Genres:</b> {{Genres["0"].name}}</div>
+                <div> <b>Budget:</b> {{Budget}}</div>
+                <div> <b>Release date:</b> {{Release_date | date: "mediumDate"}}</div>
+                <div> <b>Revenue:</b> {{Revenue}}</div>
+                <div *ngFor="let SpokenLanguages of Spoken_languages"> Spoken languages: {{SpokenLanguages.name}} ({{SpokenLanguages.iso_639_1}})
+                </div>
+                <div class="card-footer">
+                    <span class="fas fa-star"></span>
+                    <span class="far fa-star"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
+<!-- </ng-template> -->
