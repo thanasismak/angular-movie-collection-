@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ApiService } from '../api.service';
+// import { CustomValidatorsService } from '../custom-validators.service';
 
 @Component({
   selector: 'app-movies',
@@ -10,12 +11,7 @@ export class MoviesComponent implements OnInit {
   constructor(private apiService: ApiService) { }
   movies;
   searchText: string = '';
-
   ngOnInit(): void {
-    // this.apiService.getMovies().subscribe((data) => {
-    //   console.log(data);
-    //   this.movies = data['original_title'];
-    // });
   }
 
   onSearchClick() {
@@ -24,7 +20,6 @@ export class MoviesComponent implements OnInit {
         this.movies = response;
         console.log(response)
         console.log(this.searchText)
-        console.log(this.movies)
       },
       (error) => {
         console.log(error)

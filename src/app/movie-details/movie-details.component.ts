@@ -1,14 +1,12 @@
-import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit, NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
 })
-export class MovieDetailsComponent implements OnInit { 
-  constructor() {}
+export class MovieDetailsComponent implements OnInit {
+  constructor(private apiService: ApiService) { }
   Title: string;
   Overview: string;
   Poster_path: string;
@@ -19,6 +17,8 @@ export class MovieDetailsComponent implements OnInit {
   Vote_count: number;
   Spoken_languages: object[];
   Genres: object[];
+  postRating: { "value": number };
+  rating: number = 0;
 
   ngOnInit(): void {
     this.Title = "Οι Ανατριχιαστικές Περιπέτειες της Σαμπρίνα (2018)";
@@ -47,5 +47,19 @@ export class MovieDetailsComponent implements OnInit {
       }
     ];
   }
-
+  onPostRatingtest(rating) {
+    console.log(rating)
+  }
+  //Try to submit on stars 2 times to post
+  onPostRating(rating) {
+    this.apiService.postRating(rating).subscribe(
+      (response) => {
+        location.reload();
+        console.log(response)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
 }
