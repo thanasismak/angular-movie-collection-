@@ -10,8 +10,9 @@ import { ApiService } from '../api.service';
 export class MoviesComponent implements OnInit {
   constructor(private apiService: ApiService) { }
   movies;
-  searchText: string = '';
+  searchText: string;
   ngOnInit(): void {
+    this.searchText = null;
   }
 
   onSearchClick() {

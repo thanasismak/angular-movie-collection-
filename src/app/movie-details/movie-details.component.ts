@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { ApiService } from '../api.service';
 @Component({
   selector: 'movie-details',
@@ -18,7 +18,11 @@ export class MovieDetailsComponent implements OnInit {
   Spoken_languages: object[];
   Genres: object[];
   postRating: { "value": number };
-  rating: number = 0;
+  rating: number;
+  value: number;
+  addTofav: boolean = false;
+  @Input() selected: boolean;
+  @Output() selectedChange = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.Title = "Οι Ανατριχιαστικές Περιπέτειες της Σαμπρίνα (2018)";
@@ -47,9 +51,6 @@ export class MovieDetailsComponent implements OnInit {
       }
     ];
   }
-  onPostRatingtest(rating) {
-    console.log(rating)
-  }
   //Try to submit on stars 2 times to post
   onPostRating(rating) {
     this.apiService.postRating(rating).subscribe(
@@ -61,5 +62,13 @@ export class MovieDetailsComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+  addTofavorite(addTofav) {
+    console.log('inside addTofavorite function')
+    localStorage.setItem('true', JSON.stringify(this.addTofav))
+  }
+  toggleSelected() {
+    this.selected = !this.selected;
+    this.selectedChange.emit(this.selected);
   }
 }

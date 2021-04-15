@@ -5,21 +5,52 @@ html {
 
 .bg {
     /* The image used */
-    background-image: url("https://image.tmdb.org/t/p/w780/4eGoeIziBMxs60Y1mViz6nSjpPt.jpg");
     /* Half height */
-    height: 50%;
-    opacity: 0.7;
     z-index: -1;
-    /* Center and scale the image nicely */
+    align-items: center;
+    // position: relative;
+}
+
+.bg::before {
+    content: "";
+    background-image: url("https://image.tmdb.org/t/p/w780/4eGoeIziBMxs60Y1mViz6nSjpPt.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
 }
 
 .card-group .card .card-body img:hover {
     transform: rotate();
 }
 
+.card-body {
+    opacity: 0.9;
+}
+
+//card-footer
+.card-footer {
+    text-align: center;
+    background-color: #48544b;
+}
+
+.card-footer>input {
+    display: none;
+    position: relative;
+}
+
+.card-footer>input::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+//rating
 .rating {
     display: flex;
     flex-direction: row-reverse;

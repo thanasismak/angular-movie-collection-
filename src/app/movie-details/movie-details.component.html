@@ -7,36 +7,46 @@
 
 <div class="column">
     <div class="card-group">
-        <div class="card bg" style="align-items: center">
+        <div class="card bg">
             <div class="card-body">
                 <img src="../../assets/img1.jpg" />
-                <div class="card-footer" style="background-color: #48544b;"><span class="fas fa-heart"></span> Add to Favorites
+                <div class="card-footer">
+                    <input type="radio" name="addTofav" value="!addTofav" id="fav" (click)="addTofavorite(addTofav)" [(ngModel)]="addTofav">
+                    <label for="1" style="font-size: 1vw; color: black;">Add to Favorite</label>
+                    <!-- <button mat-icon-button (click)="toggleSelected()">
+                        <mat-icon *ngIf="selected" aria-label="Example icon-button with a heart icon">
+                            favorite
+                        </mat-icon>
+                        <mat-icon *ngIf="!selected" aria-label="Example icon-button with a heart icon">
+                            checked
+                        </mat-icon>
+                    </button> -->
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body" style="color: black; font-family: cursive;">
+        <div class="card ">
+            <div class="card-body " style="color: black; font-family: cursive; ">
                 <div> <b>Title:</b> {{Title}}</div>
                 <div> <b>Overview:</b> {{Overview}}</div>
                 <div> <b>Genres:</b> {{Genres["0"].name}}</div>
                 <div> <b>Budget:</b> {{Budget}}</div>
                 <div> <b>Release date:</b> {{Release_date | date: "mediumDate"}}</div>
                 <div> <b>Revenue:</b> {{Revenue}}</div>
-                <div *ngFor="let SpokenLanguages of Spoken_languages"> <b>Spoken languages:</b> {{SpokenLanguages.name}} ({{SpokenLanguages.iso_639_1}})
+                <div *ngFor="let SpokenLanguages of Spoken_languages "> <b>Spoken languages:</b> {{SpokenLanguages.name}} ({{SpokenLanguages.iso_639_1}})
                 </div>
-                <div class="container">
+                <div class="container ">
                     <span>
                         <div class="rating" style="display: inline-flex;">
                             <input type="radio" name="rating" value="5" id="5" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="5" style="font-size: 2vw;">☆</label>
+                                [(ngModel)]="rating"><label for="5" style="font-size: 2vw; ">☆</label>
                             <input type="radio" name="rating" value="4" id="4" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="4" style="font-size: 2vw;">☆</label>
+                                [(ngModel)]="rating"><label for="4" style="font-size: 2vw; ">☆</label>
                             <input type="radio" name="rating" value="3" id="3" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="3" style="font-size: 2vw;">☆</label>
+                                [(ngModel)]="rating"><label for="3" style="font-size: 2vw; ">☆</label>
                             <input type="radio" name="rating" value="2" id="2" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="2" style="font-size: 2vw;">☆</label>
+                                [(ngModel)]="rating"><label for="2" style="font-size: 2vw; ">☆</label>
                             <input type="radio" name="rating" value="1" id="1" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="1" style="font-size: 2vw;">☆</label>
+                                [(ngModel)]="rating"><label for="1" style="font-size: 2vw; ">☆</label>
                         </div>
                     </span>
                     <div> <b>Vote Average: </b>{{Vote_average}} </div>
