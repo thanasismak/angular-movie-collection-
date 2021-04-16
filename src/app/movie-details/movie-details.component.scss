@@ -8,31 +8,34 @@ html {
     /* Half height */
     z-index: -1;
     align-items: center;
-    // position: relative;
-}
-
-.bg::before {
-    content: "";
-    background-image: url("https://image.tmdb.org/t/p/w780/4eGoeIziBMxs60Y1mViz6nSjpPt.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+    // opacity: 0.8;
+    // position: relative;
 }
 
+// .bg::before {
+//     content: "";
+//     // background-image: url("https://image.tmdb.org/t/p/w780/4eGoeIziBMxs60Y1mViz6nSjpPt.jpg");
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     position: absolute;
+//     top: 0px;
+//     right: 0px;
+//     bottom: 0px;
+//     left: 0px;
+//     opacity: 0.75;
+// }
 .card-group .card .card-body img:hover {
     transform: rotate();
 }
 
-.card-body {
-    opacity: 0.9;
-}
-
+// .card-body {
+//     // opacity: 0.9;
+//     border-style: solid;
+// }
 //card-footer
 .card-footer {
     text-align: center;
@@ -47,7 +50,6 @@ html {
 .card-footer>input::before {
     content: "\2605";
     position: absolute;
-    opacity: 0;
 }
 
 //rating

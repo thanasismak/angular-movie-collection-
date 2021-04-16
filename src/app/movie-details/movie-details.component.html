@@ -7,32 +7,24 @@
 
 <div class="column">
     <div class="card-group">
-        <div class="card bg">
+        <div class="card bg" style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie.backdrop_path}}");'>
             <div class="card-body">
-                <img src="../../assets/img1.jpg" />
+                <img src="https://image.tmdb.org/t/p/w300/{{detailedMovie.poster_path}}" />
                 <div class="card-footer">
                     <input type="radio" name="addTofav" value="!addTofav" id="fav" (click)="addTofavorite(addTofav)" [(ngModel)]="addTofav">
                     <label for="1" style="font-size: 1vw; color: black;">Add to Favorite</label>
-                    <!-- <button mat-icon-button (click)="toggleSelected()">
-                        <mat-icon *ngIf="selected" aria-label="Example icon-button with a heart icon">
-                            favorite
-                        </mat-icon>
-                        <mat-icon *ngIf="!selected" aria-label="Example icon-button with a heart icon">
-                            checked
-                        </mat-icon>
-                    </button> -->
                 </div>
             </div>
         </div>
         <div class="card ">
             <div class="card-body " style="color: black; font-family: cursive; ">
-                <div> <b>Title:</b> {{Title}}</div>
-                <div> <b>Overview:</b> {{Overview}}</div>
-                <div> <b>Genres:</b> {{Genres["0"].name}}</div>
-                <div> <b>Budget:</b> {{Budget}}</div>
-                <div> <b>Release date:</b> {{Release_date | date: "mediumDate"}}</div>
-                <div> <b>Revenue:</b> {{Revenue}}</div>
-                <div *ngFor="let SpokenLanguages of Spoken_languages "> <b>Spoken languages:</b> {{SpokenLanguages.name}} ({{SpokenLanguages.iso_639_1}})
+                <div> <b>Title:</b> {{detailedMovie.title}}</div>
+                <div> <b>Overview:</b> {{detailedMovie.overview}}</div>
+                <div> <b>Genres:</b> <a *ngFor="let gnrs of detailedMovie.genres let i=index">{{gnrs.name}},</a></div>
+                <div> <b>Budget:</b> {{detailedMovie.budget | currency:'EUR':true}}</div>
+                <div> <b>Release date:</b> {{detailedMovie.release_date | date: "mediumDate"}}</div>
+                <div> <b>Revenue:</b> {{detailedMovie.revenue | currency:'EUR':true}}</div>
+                <div *ngFor="let sl of detailedMovie.spoken_languages "> <b>Spoken languages:</b> {{sl.name}} ({{sl.iso_639_1}}),
                 </div>
                 <div class="container ">
                     <span>
@@ -49,8 +41,8 @@
                                 [(ngModel)]="rating"><label for="1" style="font-size: 2vw; ">☆</label>
                         </div>
                     </span>
-                    <div> <b>Vote Average: </b>{{Vote_average}} </div>
-                    <div> <b>Vote Count: </b>{{Vote_count}} </div>
+                    <div> <b>Vote Average: </b>{{detailedMovie.vote_average}} / 10 </div>
+                    <div> <b>Vote Count: </b>{{detailedMovie.vote_count | number: '1.0-0'}} </div>
                 </div>
             </div>
         </div>

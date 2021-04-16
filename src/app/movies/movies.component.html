@@ -22,7 +22,7 @@
     <div *ngFor=" let m of movies['results']; let i=index ">
         <div class="card" style=" align-items: center ">
             <div class="card-body">
-                <a routerLink="/details/{{m.title}}/{{m.id}}"><img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}'></a>
+                <a [routerLink]="['/details/movie',m.id]"><img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}'></a>
                 <div class=" card-footer text-center text-light " style=" background-color: #48544b; ">
                     <p>{{m.title}}</p>
                     <i class=" fas fa-star "></i><i class=" fas fa-star-half-alt "> {{m.vote_average}}</i>
@@ -31,3 +31,5 @@
         </div>
     </div>
 </div>
+
+<!-- routerLink="/details/{{m.title}}/{{m.id}}" -->
