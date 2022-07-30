@@ -1,28 +1,19 @@
 <div class="col-12 bg">
-    <!-- <form action="#" class="search">
-        <input type=" text " class=" search__input " style=" font-size: x-large; " placeholder=" Search Movie ">
-        <button class=" search__button ">
-            <svg class=" search__icon ">
-                <use xlink:href=" img/sprite.svg#icon-magnifying-glass "></use>
-            </svg>
-        </button>
-    </form> -->
     <form action="#" class="form-inline my-2 my-lg-0" style="justify-content: center; height: 50vh" [routerLink]="[ '/']">
         <div class="input-group w-25 p-3">
-            <!-- <span class="input-group-text" id="search"><i class=" fa fa-search" aria-hidden="true"></i></span> -->
             <input id="txtSearchText" type="text" placeholder="Search Movie..." class="form-control" style="border-radius: 7vh;" name="SearchText" [(ngModel)]="searchText">
             <button for="textSearchText" class="input-group-append btn-warning my2-my-sm-0" style="display: none ;" type="submit" (click)="onSearchClick()">Search</button>
-            <!-- <button mdbBtn size="sm" color="warning" outline="true" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search</button> -->
         </div>
     </form>
     <div class=" row justify-content-start"></div>
 </div>
 <hr />
 <div class="card-group" style="justify-content: center;">
-    <div *ngFor=" let m of movies['results']; let i=index ">
+    <div *ngFor=" let m of movies | async ; let i=index ">
         <div class="card" style=" align-items: center ">
             <div class="card-body">
                 <a [routerLink]="['/details/movie',m.id]"><img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}'></a>
+                <!-- (click)="openDialog(m.id)" -->
                 <div class=" card-footer text-center text-light " style=" background-color: #48544b; ">
                     <p>{{m.title}}</p>
                     <i class=" fas fa-star "></i><i class=" fas fa-star-half-alt "> {{m.vote_average}}</i>

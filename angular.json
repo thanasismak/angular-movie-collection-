@@ -28,6 +28,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
                             // "node_modules/bootstrap/dist/css/boostrap.css",
                             // "node_modules/bootstrap/dist/css/font-awesome.css"
@@ -94,6 +95,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
                         ],
                         "scripts": []

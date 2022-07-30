@@ -4,55 +4,32 @@ html {
 }
 
 .bg {
-    /* The image used */
-    /* Half height */
     z-index: -1;
     align-items: center;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    // opacity: 0.8;
-    // position: relative;
 }
 
-// .bg::before {
-//     content: "";
-//     // background-image: url("https://image.tmdb.org/t/p/w780/4eGoeIziBMxs60Y1mViz6nSjpPt.jpg");
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     position: absolute;
-//     top: 0px;
-//     right: 0px;
-//     bottom: 0px;
-//     left: 0px;
-//     opacity: 0.75;
+// .card-group .card .card-body img:hover {
+//     transform: rotate();
 // }
-.card-group .card .card-body img:hover {
-    transform: rotate();
-}
 
-// .card-body {
-//     // opacity: 0.9;
-//     border-style: solid;
-// }
-//card-footer
 .card-footer {
     text-align: center;
     background-color: #48544b;
 }
 
-.card-footer>input {
-    display: none;
-    position: relative;
-}
+// .card-footer>input {
+//     display: none;
+//     position: relative;
+// }
 
-.card-footer>input::before {
-    content: "\2605";
-    position: absolute;
-}
+// .card-footer>input::before {
+//     content: "\2605";
+//     position: absolute;
+// }
 
-//rating
 .rating {
     display: flex;
     flex-direction: row-reverse;
@@ -75,6 +52,12 @@ html {
     content: "\2605";
     position: absolute;
     opacity: 0
+}
+.buttnAddToFav {
+    font-size: 1vw;
+    color: black;
+    background-color: #48544b;
+    border: 1px;
 }
 
 .rating>label:hover:before,

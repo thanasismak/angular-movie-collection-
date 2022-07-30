@@ -6,44 +6,49 @@
 </nav>
 
 <div class="column">
-    <div class="card-group">
-        <div class="card bg" style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie.backdrop_path}}");'>
-            <div class="card-body">
-                <img src="https://image.tmdb.org/t/p/w300/{{detailedMovie.poster_path}}" />
-                <div class="card-footer">
-                    <input type="radio" name="addTofav" value="!addTofav" id="fav" (click)="addTofavorite(addTofav)" [(ngModel)]="addTofav">
-                    <label for="1" style="font-size: 1vw; color: black;">Add to Favorite</label>
+    <h2 mat-dialog-title>Details</h2>
+    <mat-dialog-content>
+        <div class="card-group">
+            <div class="card bg" style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie.backdrop_path}}");'>
+                <div class="card-body">
+                    <img src="https://image.tmdb.org/t/p/w300/{{detailedMovie.poster_path}}" />
+                    <div class="card-footer" (click)=addTofavorite(addTofav) clickable>
+                        <button class="buttnAddToFav" (click)=addTofavorite(addTofav)>Add to Favorite</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card ">
+                <div class="card-body " style="color: black; font-family: cursive; ">
+                    <div> <b>Title:</b> {{detailedMovie.title}}</div>
+                    <div> <b>Overview:</b> {{detailedMovie.overview}}</div>
+                    <div> <b>Genres:</b> <a *ngFor="let gnrs of detailedMovie.genres let i=index">{{gnrs.name}},</a>
+                    </div>
+                    <div> <b>Budget:</b> {{detailedMovie.budget | currency:'EUR':true}}</div>
+                    <div> <b>Release date:</b> {{detailedMovie.release_date | date: "mediumDate"}}</div>
+                    <div> <b>Revenue:</b> {{detailedMovie.revenue | currency:'EUR':true}}</div>
+                    <div *ngFor="let sl of detailedMovie.spoken_languages "> <b>Spoken languages:</b> {{sl.name}} ({{sl.iso_639_1}}),</div>
+                    <div class="container ">
+                        <span>
+                            <div class="rating" style="display: inline-flex;">
+                                <input type="radio" name="rating" value="5" id="5" (click)=onPostRating({value:rating})
+                                    [(ngModel)]="rating"><label for="5" style="font-size: 2vw; ">☆</label>
+                                <input type="radio" name="rating" value="4" id="4" (click)=onPostRating({value:rating})
+                                    [(ngModel)]="rating"><label for="4" style="font-size: 2vw; ">☆</label>
+                                <input type="radio" name="rating" value="3" id="3" (click)=onPostRating({value:rating})
+                                    [(ngModel)]="rating"><label for="3" style="font-size: 2vw; ">☆</label>
+                                <input type="radio" name="rating" value="2" id="2" (click)=onPostRating({value:rating})
+                                    [(ngModel)]="rating"><label for="2" style="font-size: 2vw; ">☆</label>
+                                <input type="radio" name="rating" value="1" id="1" (click)=onPostRating({value:rating})
+                                    [(ngModel)]="rating"><label for="1" style="font-size: 2vw; ">☆</label>
+                            </div>
+                        </span>
+                        <div> <b>Vote Average: </b>{{detailedMovie.vote_average}} / 10 </div>
+                        <div> <b>Vote Count: </b>{{detailedMovie.vote_count | number: '1.0-0'}} </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card ">
-            <div class="card-body " style="color: black; font-family: cursive; ">
-                <div> <b>Title:</b> {{detailedMovie.title}}</div>
-                <div> <b>Overview:</b> {{detailedMovie.overview}}</div>
-                <div> <b>Genres:</b> <a *ngFor="let gnrs of detailedMovie.genres let i=index">{{gnrs.name}},</a></div>
-                <div> <b>Budget:</b> {{detailedMovie.budget | currency:'EUR':true}}</div>
-                <div> <b>Release date:</b> {{detailedMovie.release_date | date: "mediumDate"}}</div>
-                <div> <b>Revenue:</b> {{detailedMovie.revenue | currency:'EUR':true}}</div>
-                <div *ngFor="let sl of detailedMovie.spoken_languages "> <b>Spoken languages:</b> {{sl.name}} ({{sl.iso_639_1}}),
-                </div>
-                <div class="container ">
-                    <span>
-                        <div class="rating" style="display: inline-flex;">
-                            <input type="radio" name="rating" value="5" id="5" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="5" style="font-size: 2vw; ">☆</label>
-                            <input type="radio" name="rating" value="4" id="4" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="4" style="font-size: 2vw; ">☆</label>
-                            <input type="radio" name="rating" value="3" id="3" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="3" style="font-size: 2vw; ">☆</label>
-                            <input type="radio" name="rating" value="2" id="2" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="2" style="font-size: 2vw; ">☆</label>
-                            <input type="radio" name="rating" value="1" id="1" (click)=onPostRating({value:rating})
-                                [(ngModel)]="rating"><label for="1" style="font-size: 2vw; ">☆</label>
-                        </div>
-                    </span>
-                    <div> <b>Vote Average: </b>{{detailedMovie.vote_average}} / 10 </div>
-                    <div> <b>Vote Count: </b>{{detailedMovie.vote_count | number: '1.0-0'}} </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </mat-dialog-content>
+    <!-- <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions> -->

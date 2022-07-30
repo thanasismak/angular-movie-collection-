@@ -1,16 +1,20 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { ApiService } from '../api.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent {
   routeParamsSubscription: Subscription;
-  constructor(private apiService: ApiService, private activatedRouter: ActivatedRoute) {
+  constructor(private apiService: ApiService, private activatedRouter: ActivatedRoute,) {
   }
   postRating: { "value": number };
   rating: number;
@@ -35,7 +39,7 @@ export class MovieDetailsComponent implements OnInit {
   ngOnDestroy() {
     this.routeParamsSubscription.unsubscribe();
   }
-  //Try to submit on stars 2 times to post
+
   onPostRating(rating) {
     this.apiService.postRating(rating).subscribe(
       (response) => {
@@ -47,10 +51,12 @@ export class MovieDetailsComponent implements OnInit {
       }
     )
   }
+  
   addTofavorite(addTofav) {
     console.log('inside addTofavorite function')
     localStorage.setItem('true', JSON.stringify(this.addTofav))
   }
+  
   toggleSelected() {
     this.selected = !this.selected;
     this.selectedChange.emit(this.selected);
