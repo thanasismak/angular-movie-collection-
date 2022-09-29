@@ -47,7 +47,7 @@ export class ApiService {
   public SearchByText(searchText: string): Observable<MovieDto> {
     return this.httpClient.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query="${searchText}"&page=1&include_adult=false`)
     .pipe(
-      tap((res: MovieDto)=> res))
+      map((res: MovieDto)=> res))
   }
 
   public postRating(rating: number) {
