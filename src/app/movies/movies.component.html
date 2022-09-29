@@ -10,7 +10,7 @@
 <hr />
 <div class="card-group" style="justify-content: center;">
     <div *ngFor=" let m of movies | async; let i=index ">
-        <div class="card" style=" align-items: center ">
+        <div class="card" style="margin: 5px">
             <div class="card-body">
                 <a [routerLink]="['/details/movie',m.id]"><img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}'></a>
                 <!-- (click)="openDialog(m.id)" -->
