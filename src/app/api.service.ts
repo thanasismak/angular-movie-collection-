@@ -32,7 +32,6 @@ export class ApiService {
   API_KEY = '630a8685d779bf1f447346df12a461d3';
   session_id = 'bd3ff5e792156a9cfae16fcf031a1f6f';
   constructor(private httpClient: HttpClient) { }
-  public movies$: Observable<MovieDto>
 
   public getMovies() {
     return this.httpClient.get(`https://api.themoviedb.org/3/movie/314502-song-of-the-new-earth?api_key=${this.API_KEY}`);
