@@ -20,18 +20,22 @@ export class MoviesComponent {
     private activatedRouter: ActivatedRoute
   ) {}
 
-  public movies: BehaviorSubject<any> = new BehaviorSubject(0);
+  public movies: BehaviorSubject<any> = new BehaviorSubject(null);
   public searchText: string;
 
   onSearchClick() {
     return this.apiService
       .SearchByText(this.searchText)
       .pipe(
-        tap((response) =>
-          this.movies.next(
-            response['results'].sort((a, b) => b.vote_average - a.vote_average)
-          )
-        )
+        tap((response) => {
+          if (response) {
+            this.movies.next(
+              response['results'].sort(
+                (a, b) => b.vote_average - a.vote_average
+              )
+            );
+          }
+        })
       )
       .subscribe();
   }
