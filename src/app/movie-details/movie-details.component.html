@@ -8,25 +8,27 @@
 <div class="column">
     <h2 mat-dialog-title>Details</h2>
     <mat-dialog-content>
-        <div class="card-group">
-            <div class="card bg" style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie.backdrop_path}}");'>
+        <div class="card-group" style="border: 1px solid rgb(27, 26, 26)">
+            <div class="card bg" style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie?.backdrop_path}}");'>
                 <div class="card-body">
-                    <img src="https://image.tmdb.org/t/p/w300/{{detailedMovie.poster_path}}" />
-                    <div class="card-footer" (click)=addTofavorite(addTofav) clickable>
-                        <button class="buttnAddToFav" (click)=addTofavorite(addTofav)>Add to Favorite</button>
+                    <img src="https://image.tmdb.org/t/p/w300/{{detailedMovie?.poster_path}}" />
+                    <div class="card-footer">
+                        <button class="buttnAddToFav"></button>
                     </div>
                 </div>
             </div>
             <div class="card ">
                 <div class="card-body " style="color: black; font-family: cursive; ">
-                    <div> <b>Title:</b> {{detailedMovie.title}}</div>
-                    <div> <b>Overview:</b> {{detailedMovie.overview}}</div>
-                    <div> <b>Genres:</b> <a *ngFor="let gnrs of detailedMovie.genres let i=index">{{gnrs.name}},</a>
+                    <div> <b>Title:</b> {{detailedMovie?.title}}</div>
+                    <div> <b>Overview:</b> {{detailedMovie?.overview}}</div>
+                    <div> <b>Genres:</b> <a *ngFor="let gnrs of detailedMovie?.genres let i=index">{{gnrs.name}},</a>
                     </div>
-                    <div> <b>Budget:</b> {{detailedMovie.budget | currency:'EUR':true}}</div>
-                    <div> <b>Release date:</b> {{detailedMovie.release_date | date: "mediumDate"}}</div>
-                    <div> <b>Revenue:</b> {{detailedMovie.revenue | currency:'EUR':true}}</div>
-                    <div *ngFor="let sl of detailedMovie.spoken_languages "> <b>Spoken languages:</b> {{sl.name}} ({{sl.iso_639_1}}),</div>
+                    <div> <b>Budget:</b> {{detailedMovie?.budget | currency:'EUR':true}}</div>
+                    <div> <b>Release date:</b> {{detailedMovie?.release_date | date: "mediumDate"}}</div>
+                    <div> <b>Revenue:</b> {{detailedMovie?.revenue | currency:'EUR':true}}</div>
+                    <div> 
+                        <b>Spoken languages:</b> <span *ngFor="let sl of detailedMovie?.spoken_languages ">{{sl?.name}} ({{sl?.iso_639_1}}),</span>
+                    </div>
                     <div class="container ">
                         <span>
                             <div class="rating" style="display: inline-flex;">
@@ -42,8 +44,8 @@
                                     [(ngModel)]="rating"><label for="1" style="font-size: 2vw; ">☆</label>
                             </div>
                         </span>
-                        <div> <b>Vote Average: </b>{{detailedMovie.vote_average}} / 10 </div>
-                        <div> <b>Vote Count: </b>{{detailedMovie.vote_count | number: '1.0-0'}} </div>
+                        <div> <b>Vote Average: </b>{{detailedMovie?.vote_average}} / 10 </div>
+                        <div> <b>Vote Count: </b>{{detailedMovie?.vote_count | number: '1.0-0'}} </div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 // import { tap } from 'rxjs/internal/operators/tap';
 import { ApiService } from '../api.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -22,21 +22,17 @@ export class MovieDetailsComponent {
   addTofav: boolean = false;
   @Input() selected: boolean;
   @Output() selectedChange = new EventEmitter<boolean>();
-  detailedMovie;
-
-  // ngOnInit() {
-
-  // }
+  
+  public detailedMovie;
+  
   ngOnInit() {
     this.routeParamsSubscription = this.activatedRouter.params.subscribe(
       (params) => {
         let mid = params['movie_id'];
-        this.apiService.getMoviesDetailsByID(mid).pipe(
-          tap((response) => {
-            response ? this.detailedMovie.next(response) : null;
-            console.log(response);
-          })
-        );
+        this.apiService.getMoviesDetailsByID(mid)
+        .subscribe(response => {
+          response ? this.detailedMovie = response: null;
+        })
       }
     );
   }
@@ -57,7 +53,7 @@ export class MovieDetailsComponent {
     );
   }
 
-  addTofavorite(addTofav) {
+  addTofavorite() {
     console.log('inside addTofavorite function');
     localStorage.setItem('true', JSON.stringify(this.addTofav));
   }

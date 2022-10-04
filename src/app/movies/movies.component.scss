@@ -432,6 +432,12 @@
         animation: pulsate 1s infinite
     }
     
+    .fa-heart {
+        &:hover{
+           color: red;
+        }
+    }
+
     @-webkit-keyframes pulsate {
         0% {
             -webkit-transform: scale(1);

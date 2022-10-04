@@ -12,9 +12,10 @@
     <div *ngFor=" let m of movies$ | async; let i=index ">
         <div class="card" style="margin: 5px">
             <div class="card-body">
-                <a [routerLink]="['/details/movie',m.id]"><img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}'></a>
-                <!-- (click)="openDialog(m.id)" -->
+                <a [routerLink]="['/details/movie/',m.id]" [state]="m.title" ><img src='https://image.tmdb.org/t/p/w300/{{m.poster_path}}'></a>
                 <div class=" card-footer text-center text-light " style=" background-color: #48544b; ">
+                    <!-- favbutton -->
+                    <i class="heart fa fa-heart" style="font-size: 20px;" (click)="addToFavorite(m.id)"></i>
                     <p>{{m.title}}</p>
                     <i class=" fas fa-star "></i><i class=" fas fa-star-half-alt "> {{m.vote_average}}</i>
                 </div>
@@ -22,5 +23,3 @@
         </div>
     </div>
 </div>
-
-<!-- routerLink="/details/{{m.title}}/{{m.id}}" -->

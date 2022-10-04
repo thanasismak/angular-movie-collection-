@@ -26,12 +26,18 @@ export class MoviesComponent {
     return this.apiService
       //SearchByText()
       .SearchByTextFilteredByVt(this.searchText)
-      .pipe(
-        tap((results) => {
-          this.movies$?.next(results);
-        })
-      )
-      .subscribe();
+      .subscribe((results) => {
+        this.movies$?.next(results)
+      });
+  }
+
+  addToFavorite = () => {
+    //TODO...
+    console.log('hello')
+  }
+
+  ngOnDestroy() {
+    this.movies$.unsubscribe();
   }
 }
 
