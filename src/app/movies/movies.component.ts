@@ -17,26 +17,33 @@ export class MoviesComponent {
   constructor(
     private apiService: ApiService,
     public dialog: MatDialog,
-    private activatedRouter: ActivatedRoute
   ) {}
 
-  public movies: BehaviorSubject<any> = new BehaviorSubject(null);
+  public movies$: BehaviorSubject<any> = new BehaviorSubject(null);
   public searchText: string;
 
   onSearchClick() {
     return this.apiService
       .SearchByText(this.searchText)
       .pipe(
-        tap((response) => {
-          if (response) {
-            this.movies.next(
-              response['results'].sort(
-                (a, b) => b.vote_average - a.vote_average
-              )
-            );
-          }
+        tap((results) => {
+          this.movies$?.next(results);
         })
       )
       .subscribe();
   }
 }
+
+// pipe(
+//   tap((response) => {
+//     if (response) {
+//       this.movies.next(
+//         this.filterbyVt(response['results'])
+//       );
+//     }
+//   })
+// )
+// filterbyVt = (movie: MovieDto[]) => {
+//   let filteredlist = movie?.sort((a, b) => b.vote_average - a.vote_average);
+//   return filteredlist;
+// }
