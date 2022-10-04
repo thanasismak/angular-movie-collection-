@@ -24,7 +24,8 @@ export class MoviesComponent {
 
   onSearchClick() {
     return this.apiService
-      .SearchByText(this.searchText)
+      //SearchByText()
+      .SearchByTextFilteredByVt(this.searchText)
       .pipe(
         tap((results) => {
           this.movies$?.next(results);
