@@ -9,7 +9,8 @@
     <h2 mat-dialog-title>Details</h2>
     <mat-dialog-content>
         <div class="card-group" style="border: 1px solid rgb(27, 26, 26)">
-            <div class="card bg" style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie?.backdrop_path}}");'>
+            <div class="card bg"
+                style='background-image: url("https://image.tmdb.org/t/p/w780/{{detailedMovie?.backdrop_path}}");'>
                 <div class="card-body">
                     <img src="https://image.tmdb.org/t/p/w300/{{detailedMovie?.poster_path}}" />
                     <div class="card-footer">
@@ -18,7 +19,7 @@
                 </div>
             </div>
             <div class="card ">
-                <div class="card-body " style="color: black; font-family: cursive; ">
+                <div class="card-body " style="color: black; font-family: cursive;     border-style: groove;">
                     <div> <b>Title:</b> {{detailedMovie?.title}}</div>
                     <div> <b>Overview:</b> {{detailedMovie?.overview}}</div>
                     <div> <b>Genres:</b> <a *ngFor="let gnrs of detailedMovie?.genres let i=index">{{gnrs.name}},</a>
@@ -26,8 +27,9 @@
                     <div> <b>Budget:</b> {{detailedMovie?.budget | currency:'EUR':true}}</div>
                     <div> <b>Release date:</b> {{detailedMovie?.release_date | date: "mediumDate"}}</div>
                     <div> <b>Revenue:</b> {{detailedMovie?.revenue | currency:'EUR':true}}</div>
-                    <div> 
-                        <b>Spoken languages:</b> <span *ngFor="let sl of detailedMovie?.spoken_languages ">{{sl?.name}} ({{sl?.iso_639_1}}),</span>
+                    <div>
+                        <b>Spoken languages:</b> <span *ngFor="let sl of detailedMovie?.spoken_languages ">{{sl?.name}}
+                            ({{sl?.iso_639_1}}),</span>
                     </div>
                     <div class="container ">
                         <span>
