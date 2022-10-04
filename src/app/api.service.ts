@@ -47,7 +47,13 @@ export class ApiService {
   public SearchByText(searchText: string): Observable<MovieDto> {
     return this.httpClient.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query="${searchText}"&page=1&include_adult=false`)
     .pipe(
-      map((res: MovieDto)=> res))
+      map((res: MovieDto[])=> res['results']))
+  }
+
+  public SearchByTextFilteredByVt(searchText: string): Observable<MovieDto> {
+    return this.httpClient.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query="${searchText}"&page=1&include_adult=false`)
+    .pipe(
+      map((res: MovieDto[])=> res['results'].sort((a, b) => b.vote_average - a.vote_average)))
   }
 
   public postRating(rating: number) {
