@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
-import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subscription, tap } from 'rxjs';
 // import { CustomValidatorsService } from '../custom-validators.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +19,7 @@ export class MoviesComponent {
     public dialog: MatDialog,
   ) {}
 
-  public movies$: BehaviorSubject<any> = new BehaviorSubject(null);
+  public movies$: ReplaySubject<any> = new ReplaySubject(null);
   public searchText: string;
 
   onSearchClick() {
@@ -40,17 +40,3 @@ export class MoviesComponent {
     this.movies$.unsubscribe();
   }
 }
-
-// pipe(
-//   tap((response) => {
-//     if (response) {
-//       this.movies.next(
-//         this.filterbyVt(response['results'])
-//       );
-//     }
-//   })
-// )
-// filterbyVt = (movie: MovieDto[]) => {
-//   let filteredlist = movie?.sort((a, b) => b.vote_average - a.vote_average);
-//   return filteredlist;
-// }
